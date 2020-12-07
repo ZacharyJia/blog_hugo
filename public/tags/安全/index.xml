@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>安全 on Zachary&#39;s Blog</title>
+    <link>https://blog.zacharyjia.me/tags/%E5%AE%89%E5%85%A8/</link>
+    <description>Recent content in 安全 on Zachary&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 04 Oct 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.zacharyjia.me/tags/%E5%AE%89%E5%85%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NSCTF2015部分题目解析</title>
+      <link>https://blog.zacharyjia.me/p/nsctf2015%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AE%E8%A7%A3%E6%9E%90/</link>
+      <pubDate>Sun, 04 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zacharyjia.me/p/nsctf2015%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AE%E8%A7%A3%E6%9E%90/</guid>
+      <description>&lt;p&gt;前段时间做了NSCTF的比赛，做出了其中的几道题目，下面对几道题目的解题过程进行简单的分析。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

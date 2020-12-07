@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='前段时间做了NSCTF的比赛，做出了其中的几道题目，下面对几道题目的解题过程进行简单的分析。'><title>NSCTF2015部分题目解析</title>
+
+<link rel='canonical' href='https://blog.zacharyjia.me/p/nsctf2015%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AE%E8%A7%A3%E6%9E%90/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='NSCTF2015部分题目解析'>
+<meta property='og:description' content='前段时间做了NSCTF的比赛，做出了其中的几道题目，下面对几道题目的解题过程进行简单的分析。'>
+<meta property='og:url' content='https://blog.zacharyjia.me/p/nsctf2015%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AE%E8%A7%A3%E6%9E%90/'>
+<meta property='og:site_name' content='Zachary&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='安全' /><meta property='article:published_time' content='2015-10-04T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2015-10-04T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="NSCTF2015部分题目解析">
+<meta name="twitter:description" content="前段时间做了NSCTF的比赛，做出了其中的几道题目，下面对几道题目的解题过程进行简单的分析。">
+    </head>
+    <body class="">
+        <div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+
+                
+                    
+                    <img src="/img/avatar_hub711587dd8549032a5441bfdfb2dc9e8_883541_300x300_resize_box_2.png" width="300"
+                        height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://blog.zacharyjia.me">Zachary&#39;s Blog</a></h1>
+        <h2 class="site-description">贾泽群的个人博客</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://blog.zacharyjia.me" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            
+                <a href="/categories/%E5%BC%80%E5%8F%91/">开发</a>
+            
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/p/nsctf2015%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AE%E8%A7%A3%E6%9E%90/">NSCTF2015部分题目解析</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        前段时间做了NSCTF的比赛，做出了其中的几道题目，下面对几道题目的解题过程进行简单的分析。
+    </h3>
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Oct 04, 2015</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <p>前段时间做了NSCTF的比赛，做出了其中的几道题目，下面对几道题目的解题过程进行简单的分析。</p>
+<h2 id="1-crypto50-神奇的字符串">1. Crypto50 神奇的字符串</h2>
+<h3 id="题目">题目：</h3>
+<p><img src="http://qn-cdn.zacharyjia.me/imgcrypto50.png" alt="crypto50"  /></p>
+<h3 id="解题过程">解题过程：</h3>
+<p>观察题目中的字符串，应该是进行了加密之后得到的字符串。利用网上的解密工具进行Base64解密，AES解密等解密工具以后发现，是使用了AES进行了加密。解密后的密文为：</p>
+<blockquote>
+<p>flag{DISJV_Hej_UdShofjyed}</p>
+</blockquote>
+<p>根据NSCTF的flag规则，flag应该是以**“NSCTF_”**开头的，而解密后得到的结果的前几位是**“DISJV”**,
+猜测是否使用了最常见的移位方法进行了加密。
+于是进行一下验证，首先将DISJV几个字母与NSCTF对应</p>
+<pre><code>原：ABCDEFGHIJKLMNOPQRSTUVWXYZ
+
+移：  S  V       D    IJ
+</code></pre><p>进行补全后如下：</p>
+<pre><code>原：ABCDEFGHIJKLMNOPQRSTUVWXYZ
+
+移：QRSTUVWXYZABCDEFGHIJKLMNOP
+</code></pre><p>发现能够完全对应。于是将flag中剩下的字母按照大小写进行对应，最终得到最后的flag：</p>
+<blockquote>
+<p>NSCTF_Rot_EnCryption</p>
+</blockquote>
+<h2 id="2-web200-decode">2. Web200 Decode</h2>
+<h3 id="题目要求">题目要求：</h3>
+<p><img src="http://qn-cdn.zacharyjia.me/imgweb200Decode.png" alt="web200Decode"  />
+本题目的要求比较简单，是针对一个已经给出源代码的PHP加密函数，解密加密后的密文。</p>
+<h3 id="解题过程-1">解题过程：</h3>
+<p>根据题目要求，只需要弄懂加密代码中的使用的几种加密方法即可。</p>
+<p>要解密文，只需要按照与加密顺序相反的顺序进行解密即可。</p>
+<p>首先分析源代码，我们可以看到最后进行的操作是<code>str_rot13</code>这个函数。我们查看这个函数的介绍：</p>
+<pre><code>str_rot13() 函数对字符串执行 ROT13 编码。
+
+ROT-13 编码是一种每一个字母被另一个字母代替的方法。这个代替字母是由原来的字母向前移动 13 个字母而得到的。数字和非字母字符保持不变。
+
+提示：编码和解码都是由相同的函数完成的。如果您把一个已编码的字符串作为参数，那么将返回原始字符串。
+</code></pre><p>从这里我们可以清楚地知道，rot13编码的加密和解密函数其实是同一个函数，只要对密文再进行一遍rot13编码即可解密。因此我们的第一步就是再次调用<code>str_rot13</code>函数，处理密文。</p>
+<p>然后，我们可以看到倒数第二步进行的操作是<code>strrev</code>函数，这个函数是对字符串进行反转，也就是倒序输出。很明显，要还原密文，只需要再次调用<code>strrev</code>函数对上一步的密文进行处理即可。</p>
+<p>接着，我们发现加密算法还对密文进行了base64加密，只需要调用<code>base64_decode</code>函数就可以解密。</p>
+<p>接着，我们再来分析上面的for循环中的内容。从for循环上面的语句来看，我们知道$_o中的字符串应该是原文的倒序。
+然后我们来看for循环对$_o这个函数进行了怎样的操作:</p>
+<p>第一步是看循环的次数，我们可以清楚的看出是循环了<code>strlen($_o)</code>次，也就是与$_o的长度等长。
+然后<code>$_c = substr($_o, $_O, 1)</code>这个是从字符串的第$_O个位置截取1个字符出来，赋值给$_c。
+接着<code>$__ = ord($_c) + 1</code>和<code>$_c = chr($__)</code>两句的意思是，先将刚才的字符转换为ascii码，加1以后再转回字符。
+最后再把这个新的字符挨个连接起来生成$_这个变量。</p>
+<p>综合来看，其实就是将原文中所有的字符都加1。那我们要解密的话也可以使用类似的方法，对密文中所有的字符循环减1。这样就得到了$_o中的内容。</p>
+<p>然后我们说过,$_o和$str中的数据是相互逆序的关系，我们只需要再对$_o进行一遍逆序，就可以得到原文了！</p>
+<p>以下是解密函数的代码：</p>
+<pre><code>&lt;?php
+$sec = &quot;a1zLbgQsCESEIqRLwuQAyMwLyq2L5VwBxqGA3RQAyumZ0tmMvSGM2ZwB4tws&quot;;
+
+$sec = str_rot13($sec);
+$sec = strrev($sec);
+$sec = base64_decode($sec);
+
+for($i = strlen($sec) - 1; $i &gt;= 0; $i--) 
+{
+	$c = substr($sec, $i, 1);
+	$__ = ord($c) - 1;
+	$c = chr($__);
+	$_ = $c.$_;
+}
+
+echo strrev($_);
+
+?&gt;
+</code></pre><p>在php服务器上执行以上代码，就可以得到原文。</p>
+<h2 id="3misc250-wireshark">3.MISC250 WireShark</h2>
+<h3 id="题目要求-1">题目要求：</h3>
+<p><img src="http://qn-cdn.zacharyjia.me/imgwireshark.png" alt="wireshark"  /></p>
+<h3 id="解题思路">解题思路：</h3>
+<p>首先根据题目的描述，使用wireshark打开下载到的文件。题目中描述，这里面有室友下载的小东东。
+既然是下载的内容，首先考虑的就是HTTP协议和FTP协议，然后在记录中查找可以找到下面的记录。</p>
+<p><img src="http://qn-cdn.zacharyjia.me/imgwireshark2.png" alt="wireshark2"  /></p>
+<p>划红线的部分可以看到，用户下载了一个key.rar的文件。然后我们找到下面一个从服务器发来的包，就可以找到key.rar的文件的内容。
+将数据dump到文件中发现，是一个加密的rar文件。</p>
+<p>继续在抓到的包中寻找发现，在rar之前的http包中发现，用户还浏览过一个html文件，使用相同的方式将html文件保存下来，打开后发现文件内容大概是这样：</p>
+<blockquote>
+<p>密码是nsfocus+5位数字</p>
+</blockquote>
+<p>接下来就只能使用暴力破解了，这里我使用的是ARCHPR 4.54这个软件，但是由于密码规则比较特殊，前几位是固定的字母，而最后五位是数字，使用其默认的规则有些困难。
+因此，我手动编写了一个小程序，将所有nsfocus+5位数字的可能性全部输出到了一个文件里，将这个文件作为字典文件，使用字典类型的破解，最终获取了密码，然后得到了该文件中的flag。</p>
+<h2 id="4misc400-小绿的女神">4.MISC400 小绿的女神</h2>
+<h3 id="题目要求-2">题目要求：</h3>
+<p><img src="http://qn-cdn.zacharyjia.me/imgcard.png" alt="card"  /></p>
+<p>这个题目有点特殊，是上传一个card文件，模拟刷卡，然后可以在网页上模拟消费和查询余额两个操作。</p>
+<h3 id="解题过程-2">解题过程：</h3>
+<p>拿到这个题目，首先上传card文件上去，然后点击查询余额，发现显示了余额，并且页面中显示了card文件的16进制内容，然后再次进行刷卡操作，提示消费了**元，并且更新了显示的card的内容。
+注意到操作前后显示的内容是不同的， 因此可以猜测，变化的部分就是存储卡的余额的相关部分。
+使用文件对比工具，比较一下变化的内容：</p>
+<p><img src="http://qn-cdn.zacharyjia.me/imgcard2.png" alt="card2"  /></p>
+<p>可以看到0x40和0xC0那两行有变化。再次仔细对比可以发现，0xC0~0xC3部分表示的是当前余额：</p>
+<p>余额为 96.41， 0xC0~0xC3部分内容为 A9 25 00 00。应该是按照内存中数据的存储方式，高位数据在内存地址大的位置。也就是说其值应该为00 00 25 A9,即9641。</p>
+<p>而0xC4~0xC7部分是0xFFFFFFFF减去余额。
+直接修改该部分和其后相同的部分发现，系统提示不通过，也就是卡片内容修改之后不能通过系统的验证了。继续观察发现：
+继续观察发现，另一部分发生变化的0x40~0x43与0xC0~0xC3部分的和是不变的！</p>
+<p>将两部分对应好之后修改发现，卡片的余额确实发生了变化，但是不能达到预期的数字。因为即使把0x40~0x43部分改成0，也不能余额达到208那么大的数字。也就是说这两部分的总和根本就不到208，只修改这两部分肯定不能达到要求。</p>
+<p>这是我们继续观察发现，0x80那一行的数据也与其他为00的数据不同，肯定与其他数据有关联。经过计算发现，0x80那一行的数据就是0x40和0xC0的和，0x80的数据就是卡片的总和！
+这样就很简单了，只需要将0x80那一行的数据改成足够大，然后把0xC0部分修改为 40 51 00 00 (其他部分相应修改)就可以查询到208的余额了！然后就能看到弹出的flag了。</p>
+<h2 id="总结">总结</h2>
+<p><img src="http://qn-cdn.zacharyjia.me/imgscore2.png" alt="score2"  /></p>
+<p><img src="http://qn-cdn.zacharyjia.me/imgscore.png" alt="score"  /></p>
+<p>本次比赛中我共得到了1200分，虽然做出了一部分的题。但是感觉做起来比较艰难，在Web、逆向等方面的经验和能力明显不足，希望以后能够不断积累经验提高自己的水平。</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E5%AE%89%E5%85%A8/">安全</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-ND 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title"></h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/p/floyd%E5%88%A4%E5%9C%88%E7%AE%97%E6%B3%95%E9%BE%9F%E5%85%94%E8%B5%9B%E8%B7%91%E7%AE%97%E6%B3%95/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Floyd判圈算法（龟兔赛跑算法）</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/p/8086%E6%B1%87%E7%BC%96%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">8086汇编开发环境搭建</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">&copy; 2020 Zachary&#39;s Blog</section>
+    <section class="powerby"> <br />
+        
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+            </main>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
+    integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin="anonymous"></script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="/css/highlight/light.min.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="/css/highlight/dark.min.css" media="(prefers-color-scheme: dark)">
+
+    </body>
+</html>

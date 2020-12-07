@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='8086汇编开发环境搭建'><title>8086汇编开发环境搭建</title>
+
+<link rel='canonical' href='https://blog.zacharyjia.me/p/8086%E6%B1%87%E7%BC%96%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='8086汇编开发环境搭建'>
+<meta property='og:description' content='8086汇编开发环境搭建'>
+<meta property='og:url' content='https://blog.zacharyjia.me/p/8086%E6%B1%87%E7%BC%96%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/'>
+<meta property='og:site_name' content='Zachary&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2015-09-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2015-09-27T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="8086汇编开发环境搭建">
+<meta name="twitter:description" content="8086汇编开发环境搭建">
+    </head>
+    <body class="">
+        <div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+
+                
+                    
+                    <img src="/img/avatar_hub711587dd8549032a5441bfdfb2dc9e8_883541_300x300_resize_box_2.png" width="300"
+                        height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://blog.zacharyjia.me">Zachary&#39;s Blog</a></h1>
+        <h2 class="site-description">贾泽群的个人博客</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://blog.zacharyjia.me" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            
+                <a href="/categories/%E5%BC%80%E5%8F%91/">开发</a>
+            
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/p/8086%E6%B1%87%E7%BC%96%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">8086汇编开发环境搭建</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        8086汇编开发环境搭建
+    </h3>
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Sep 27, 2015</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <p>本学期开始学习汇编了，但是无奈学的东西都是好久之前的老知识了，在现在的电脑上实践起来略有困难，连<code>debug</code>命令都没法用。
+最后在参考老师给的资料和网上相关资料的基础上，完成了汇编开发环境的搭建，做下记录，以备后用。</p>
+<p>整个开发环境的搭建主要有以下几步：</p>
+<ol>
+<li>Dos模拟器DosBox的安装和本地文件夹的挂载</li>
+<li>masm、link、debug等工具的安装</li>
+<li>环境变量的配置</li>
+<li>自动运行脚本的配置</li>
+</ol>
+<p>以上是基本步骤。文中所用到的各个软件可以在<a class="link" href="http://qn-cdn.zacharyjia.me/file%e6%b1%87%e7%bc%96%e5%bc%80%e5%8f%91%e7%8e%af%e5%a2%83%e6%90%ad%e5%bb%ba.zip"  target="_blank" rel="noopener"
+    >这里</a>下载</p>
+<p>下面开始正式的安装和搭建过程。</p>
+<h3 id="0x0-dos模拟器dosbox的安装和本地文件夹的挂载">0x0. Dos模拟器DosBox的安装和本地文件夹的挂载</h3>
+<p>从上面的压缩包中找到DosBox的安装文件，安装即可。安装完成后可以桌面或者开始菜单的图标打开DosBox.如下图：</p>
+<p><img src="http://qn-cdn.zacharyjia.me/imgDosBox.png" alt="DosBox"  /></p>
+<p>可以看到它默认的系统盘是Z盘。
+下面我们可以通过以下命令将本地电脑的一个文件夹挂载到DosBox中：</p>
+<pre><code>mount c e:\masm611
+</code></pre><p>这条命令的含义就是将本地的<code>e:\masm611</code>这个文件夹挂载到DosBox中的C盘里。
+也就是说你在DosBox中访问C盘的资源就可以看到这个文件夹中的内容了。
+可以通过</p>
+<pre><code>c: 
+dir
+</code></pre><p>这两条命令查看到其中的内容。</p>
+<h3 id="0x1-masmlinkdebug等工具的安装">0x1. masm、link、debug等工具的安装</h3>
+<p>我们在进行汇编编程的过程中，上面说的这几个工具都是非常常用的。Masm是编译器，link是链接器，debug是用来调试程序的。</p>
+<p>首先我们来安装masm，这里我使用的是Masm6.11的安装版，我没有尝试过只使用一个masm.exe文件是否能够成功，可以自行尝试。
+把压缩包中的Masm611.zip中的几个文件夹解压到刚才挂载的文件夹中（e:\masm611），然后从DosBox中进入DISK1文件夹，运行其中的setup.exe:</p>
+<pre><code>cd DISK1 回车
+setup 回车
+</code></pre><p>这时你就可以看到上古时代的软件安装界面了^_^</p>
+<p><img src="http://qn-cdn.zacharyjia.me/img%e5%ae%89%e8%a3%85.png" alt="安装"  /></p>
+<p>按照提示首先按回车继续，然后选择<code>Install the Macro Assembler using defaults</code>：</p>
+<p><img src="http://qn-cdn.zacharyjia.me/img%e5%ae%89%e8%a3%852.png" alt="安装2"  /></p>
+<p>然后选择安装位置，我们选择刚刚挂载的C盘。</p>
+<p>然后确认我们的选择。我们选择<code>NO CHANGES</code>继续安装即可。</p>
+<p><img src="http://qn-cdn.zacharyjia.me/img%e5%ae%89%e8%a3%853.png" alt="安装3"  /></p>
+<p>最后等待一会儿之后就可以安装完成了。（确实要等<em>一会儿</em>）</p>
+<p>回到命令输入界面后，我们可以通过cd命令进入到<code>c:\masm611\bin</code>这个目录，然后通过dir命令查看所有文件，如果你能找到
+<code>masm.exe</code>这个文件，那么你这一步你就成功了。</p>
+<p>接着我们安装link和debug工具。其实不算安装，只要在windows中将压缩包里的两个exe文件复制到<code>E:\masm611\masm611\bin</code>这个文件夹里就可以了。
+然后在DosBox里再次查看<code>c:\masm611\bin</code>这个目录，能看到刚复制进去的两个文件就OK了。如果看不到的话，就执行下面这条命令再查看：</p>
+<pre><code>rescan
+</code></pre><p>这条命令是用来清除磁盘缓存的。</p>
+<p>最后，你的文件夹里应该是这样的：</p>
+<p><img src="http://qn-cdn.zacharyjia.me/imgbin.png" alt="bin"  /></p>
+<h3 id="0x2-环境变量的配置">0x2. 环境变量的配置</h3>
+<p>我们现在已经可以使用使用masm、Link、debug这些命令进行汇编的编程了，但是每次都要输入全路径很麻烦，所以要通过配置环境变量来简化我们的操作。
+相信学习过java开发的人都了解环境变量的作用了。在dos下设置环境变量只需要一条命令就行：</p>
+<pre><code>set PATH=%PATH%;c:\masm611\bin\;
+</code></pre><p>也就是在原来的PATH的基础上，再加入c:\masm611\bin这个路径，也就是我们的masm等文件所在的路径。
+执行完上面的命令之后，你应该就可以直接在里面输入:</p>
+<pre><code>masm
+</code></pre><p>来运行masm程序了。like this:</p>
+<p><img src="http://qn-cdn.zacharyjia.me/imgmasm.png" alt="masm"  /></p>
+<p>这样这一步也成功完成了。</p>
+<h3 id="0x3-自动运行脚本的配置">0x3. 自动运行脚本的配置</h3>
+<p>到这里，其实你已经可以愉快的开发了。然而当你下次再打开DosBox的时候，你会发现：</p>
+<pre><code>&quot;WTF？C盘怎么不见了！？&quot;
+&quot;我的masm命令怎么运行不了了？！&quot;
+...
+</code></pre><p>这是因为你刚才做的配置都不能保存，关闭DosBox之后就都没了~_~
+为了解决这个问题，我们可以对DosBox进行配置，让它在每次启动的时候自动为我们执行上面的操作。</p>
+<p>在打开DosBox的时候，你应该会看到除了DosBox的窗口之外，还启动了另一个命令行窗口。</p>
+<p><img src="http://qn-cdn.zacharyjia.me/imgconfig.png" alt="config"  /></p>
+<p>然后我画红线的位置就是配置文件所在的地方，使用文本(ji)编(shi)辑(ben)器打开这个文件，然后找到最后的[autoexec]部分，在后面追加以下命令：</p>
+<pre><code>mount c e:\masm611
+set PATH=%PATH%;c:\masm611\bin\;
+</code></pre><p>别忘记保存。这时，你再重新打开DosBox试试，发现启动完成之后，它已经自动执行了这两条命令了。这时就可以直接使用masm等命令了！</p>
+<h3 id="0x4-备注">0x4. 备注</h3>
+<p>我的安装过程中并没有在DosBox安装文本编辑器来编辑代码，因为我不想在Dos的命令行中写代码。
+代码可以直接在e:\masm611这个文件夹中写，然后进DosBox编译链接调试就行，我相信大家还是更爱windows下的文本编辑器吧。</p>
+<p>当然如果你非要在Dos下编辑文件的话，可以去网上找一个Dos下的edit.exe复制到DosBox里面使用。</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-ND 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title"></h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/p/floyd%E5%88%A4%E5%9C%88%E7%AE%97%E6%B3%95%E9%BE%9F%E5%85%94%E8%B5%9B%E8%B7%91%E7%AE%97%E6%B3%95/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Floyd判圈算法（龟兔赛跑算法）</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/p/nsctf2015%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AE%E8%A7%A3%E6%9E%90/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">NSCTF2015部分题目解析</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">&copy; 2020 Zachary&#39;s Blog</section>
+    <section class="powerby"> <br />
+        
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+            </main>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
+    integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin="anonymous"></script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="/css/highlight/light.min.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="/css/highlight/dark.min.css" media="(prefers-color-scheme: dark)">
+
+    </body>
+</html>
