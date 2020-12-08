@@ -1,6 +1,7 @@
 ---
 title: 微信、支付宝个人收款的一种实现思路
 date: 2018-03-11
+slug: thinking-on-personal-pay
 categories:
     - 开发
 ---

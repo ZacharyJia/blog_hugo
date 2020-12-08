@@ -1,6 +1,7 @@
 ---
 title: 使用泛域名解析和Laravel路由实现用户自定义子域名
 date: 2016-04-20
+slug: custom-subdomain-using-laravel
 categories:
     - 开发
 tags:

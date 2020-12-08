@@ -2,6 +2,7 @@
 title: gitlab-ci中pip缓存的配置
 description: 最近给实验室的Gitlab服务器开启了CI功能，采用的是docker模式，每次都启动一个全新的镜像进行构建。
 date: 2017-04-06
+slug: gitlab-ci-pip-cache
 categories:
     - 开发
 ---

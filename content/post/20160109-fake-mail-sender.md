@@ -1,6 +1,7 @@
 ---
 title: 你真的知道谁给你发的邮件吗？——邮件发件人伪造
 description: 如果发件人信息是可以伪造的，你还能知道是谁给你发的邮件吗？
+slug: fake-mail-sender
 date: 2016-01-09
 categories:
     - 开发

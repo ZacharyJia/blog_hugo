@@ -32,12 +32,12 @@ DefaultContentLanguage = "cn"                   # Theme i18n support
             default = "Licensed under CC BY-NC-ND 4.0"
             
     [params.comments]
-        enabled = false
-        provider = "disqus"         # Available: disqus, utterances    
+        enabled = true
+        provider = "utterances"         # Available: disqus, utterances    
         [params.comments.utterances]
-            repo = ""
+            repo = "ZacharyJia/ZacharyJia.github.io"
             issueTerm = "pathname"
-            label = ""             # Optional
+            label = "Comment"             # Optional
             theme = "preferred-color-scheme"
             
     [params.widgets]

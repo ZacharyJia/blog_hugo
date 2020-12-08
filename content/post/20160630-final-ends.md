@@ -1,10 +1,10 @@
 ---
 title: 本科的期末考试结束了
 description: 本科阶段的期末考试生涯在昨天结束了。
+slug: final-of-bachalor-ends
 date: 2016-06-30
 categories:
     - 总结
-
 ---
 
 本科阶段的期末考试生涯在昨天结束了。

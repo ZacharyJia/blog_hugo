@@ -1,6 +1,7 @@
 ---
 title: Linux下安装Riverbed OPNET Modeler 18.6.1过程
 date: 2018-01-16
+slug: linux-opnet-installation-guide
 categories:
     - 开发
 tags:

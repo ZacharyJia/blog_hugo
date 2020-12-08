@@ -2,6 +2,7 @@
 title: 关注练习的效果——《刻意练习》读后感
 description: 拖了好久，终于把《刻意练习》这本书看完了
 date: 2017-02-12
+slug: keyilianxi
 categories:
     - 读书
 ---

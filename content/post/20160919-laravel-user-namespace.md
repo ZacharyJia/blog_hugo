@@ -1,6 +1,7 @@
 ---
 title: 修改Laravel自带的认证系统的User类的命名空间
 date: 2016-09-19
+slug: laravel-user-namespace
 categories:
     - 开发
 ---

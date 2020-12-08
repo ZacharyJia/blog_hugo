@@ -2,6 +2,7 @@
 title: laravel 路由缓存
 description: 今天在调试Laravel时，发现Routes.php中定义的路由不起作用了！
 date: 2016-07-05
+slug: laravel-routing-cache
 categories:
     - 开发
 tags:

@@ -1,6 +1,7 @@
 ---
 title: 文献管理工具的来回折腾
 date: 2019-08-23
+slug: citation-manager
 categories:
     - 科研
 tags:

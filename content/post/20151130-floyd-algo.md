@@ -1,6 +1,7 @@
 ---
 title: Floyd判圈算法（龟兔赛跑算法）
 description: 如何判断一个链表是否有闭环？
+slug: floyd-algo
 date: 2015-11-30
 categories:
     - 开发

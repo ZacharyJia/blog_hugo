@@ -1,5 +1,6 @@
 ---
 title: 自己动手编写Wireshark Lua插件解析自定义协议
+slug: wireshark-plugin-using-lua
 date: 2018-02-01
 categories:
     - 开发

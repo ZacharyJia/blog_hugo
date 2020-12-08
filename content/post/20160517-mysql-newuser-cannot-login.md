@@ -1,6 +1,7 @@
 ---
 title: 解决MySQL新建用户后无法登录问题
 date: 2016-05-17
+slug: mysql-user-user-cannot-login
 categories:
     - 开发
 tags:

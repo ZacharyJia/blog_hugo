@@ -1,6 +1,7 @@
 ---
 title: Peterson算法中turn(will_wait)变量的作用
 date: 2016-04-10
+slug: peterson-algo-turn
 categories:
     - 开发
 tags:

@@ -1,5 +1,6 @@
 ---
 title: 荐书：《编码：隐匿在计算机软硬件背后的语言》
+slug: coding-book
 date: 2018-02-20
 categories:
     - 读书

@@ -1,6 +1,7 @@
 ---
 title: 雅思考试经验总结
 date: 2018-09-06
+slug: ielts-conclusion
 categories:
     - 总结
 ---

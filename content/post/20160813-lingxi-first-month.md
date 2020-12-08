@@ -2,6 +2,7 @@
 title: 灵析的一个月总结
 description: 转眼间，在灵析实习已经一个多月了。
 date: 2016-08-13
+slug: first-month-at-lingxi
 categories:
     - 总结
 ---
