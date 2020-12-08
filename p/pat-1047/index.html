@@ -1,0 +1,104 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="题目要求 Zhejiang University has 40000 students and provides 2500 courses. Now given the registered course list of each student, you are supposed to output the student name lists of all the courses."><title>PAT-1047 Student List for Course (25)</title><link rel=canonical href=https://blog.zacharyjia.me/p/pat-1047/><link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="PAT-1047 Student List for Course (25)"><meta property="og:description" content="题目要求 Zhejiang University has 40000 students and provides 2500 courses. Now given the registered course list of each student, you are supposed to output the student name lists of all the courses."><meta property="og:url" content="https://blog.zacharyjia.me/p/pat-1047/"><meta property="og:site_name" content="Zachary's Blog"><meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:tag" content="算法"><meta property="article:tag" content="PAT"><meta property="article:published_time" content="2016-02-28T00:00:00+00:00"><meta property="article:modified_time" content="2016-02-28T00:00:00+00:00"><meta name=twitter:title content="PAT-1047 Student List for Course (25)"><meta name=twitter:description content="题目要求 Zhejiang University has 40000 students and provides 2500 courses. Now given the registered course list of each student, you are supposed to output the student name lists of all the courses."></head><body><div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header class=site-info><figure class=site-avatar><img src=/img/avatar_hub711587dd8549032a5441bfdfb2dc9e8_883541_300x300_resize_box_2.png width=300 height=300 class=site-logo loading=lazy alt=Avatar>
+<span class=emoji>🍥</span></figure><h1 class=site-name><a href=https://blog.zacharyjia.me>Zachary's Blog</a></h1><h2 class=site-description>贾泽群的个人博客</h2></header><ol class=menu id=main-menu><li><a href=/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg><span>主页</span></a></li><li><a href=/about><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg><span>关于</span></a></li><li><a href=/archives><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg><span>归档</span></a></li><li><a href=/search><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg><span>搜索</span></a></li></ol></aside><main class="main full-width"><div id=article-toolbar><a href=https://blog.zacharyjia.me class=back-home><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="15 6 9 12 15 18"/></svg><span>Back</span></a></div><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/%E5%BC%80%E5%8F%91/>开发</a></header><h2 class=article-title><a href=/p/pat-1047/>PAT-1047 Student List for Course (25)</a></h2><footer class=article-time><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg><time class=article-time--published>Feb 28, 2016</time></footer></div></header><section class=article-content><h2 id=题目要求>题目要求</h2><p>Zhejiang University has 40000 students and provides 2500 courses. Now given the registered course list of each student, you are supposed to output the student name lists of all the courses.</p><h4 id=input-specification>Input Specification:</h4><p>Each input file contains one test case. For each case, the first line contains 2 numbers: N (&lt;=40000), the total number of students, and K (&lt;=2500), the total number of courses. Then N lines follow, each contains a student&rsquo;s name (3 capital English letters plus a one-digit number), a positive number C (&lt;=20) which is the number of courses that this student has registered, and then followed by C course numbers. For the sake of simplicity, the courses are numbered from 1 to K.</p><h4 id=output-specification>Output Specification:</h4><p>For each test case, print the student name lists of all the courses in increasing order of the course numbers. For each course, first print in one line the course number and the number of registered students, separated by a space. Then output the students' names in alphabetical order. Each name occupies a line.</p><h4 id=sample-input>Sample Input:</h4><pre><code>10 5
+ZOE1 2 4 5
+ANN0 3 5 2 1
+BOB5 5 3 4 2 1 5
+JOE4 1 2
+JAY9 4 1 2 5 4
+FRA8 3 4 2 5
+DON2 2 4 5
+AMY7 1 5
+KAT3 3 5 4 2
+LOR6 4 2 4 1 5
+</code></pre><h4 id=sample-output>Sample Output:</h4><pre><code>1 4
+ANN0
+BOB5
+JAY9
+LOR6
+2 7
+ANN0
+BOB5
+FRA8
+JAY9
+JOE4
+KAT3
+LOR6
+3 1
+BOB5
+4 7
+BOB5
+DON2
+FRA8
+JAY9
+KAT3
+LOR6
+ZOE1
+5 9
+AMY7
+ANN0
+BOB5
+DON2
+FRA8
+JAY9
+KAT3
+LOR6
+ZOE1
+</code></pre><h2 id=解题思路>解题思路</h2><p>此题与之前的1039非常类似。首先要对学生的名称进行哈希，得到相应的整数，然后在每个课程对应的vector下面，存储学生姓名的哈希值。同时，在一个数组里，以哈希值为Index存储学生的姓名。</p><p>最后在输出的时候，首先对哈希值进行一遍排序，然后将存储的学生姓名输出即可。</p><h2 id=代码>代码</h2><div class=highlight><pre class=chroma><code class=language-c++ data-lang=c++><span class=cp>#include</span> <span class=cpf>&lt;cstdio&gt;</span><span class=cp>
+</span><span class=cp>#include</span> <span class=cpf>&lt;cstdlib&gt;</span><span class=cp>
+</span><span class=cp>#include</span> <span class=cpf>&lt;cstring&gt;</span><span class=cp>
+</span><span class=cp>#include</span> <span class=cpf>&lt;vector&gt;</span><span class=cp>
+</span><span class=cp>#include</span> <span class=cpf>&lt;algorithm&gt;</span><span class=cp>
+</span><span class=cp></span>
+<span class=k>using</span> <span class=k>namespace</span> <span class=n>std</span><span class=p>;</span>
+
+<span class=kt>char</span> <span class=n>names</span><span class=p>[</span><span class=mi>26</span> <span class=o>*</span> <span class=mi>26</span> <span class=o>*</span> <span class=mi>26</span> <span class=o>*</span> <span class=mi>10</span> <span class=o>+</span> <span class=mi>10</span><span class=p>][</span><span class=mi>5</span><span class=p>];</span>
+<span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>c</span><span class=p>[</span><span class=mi>2510</span><span class=p>];</span>
+
+<span class=kt>int</span> <span class=nf>getHash</span><span class=p>(</span><span class=kt>char</span> <span class=o>*</span><span class=n>a</span><span class=p>)</span>
+<span class=p>{</span>
+	<span class=k>return</span> <span class=p>(</span><span class=n>a</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=o>-</span> <span class=sc>&#39;A&#39;</span><span class=p>)</span> <span class=o>*</span> <span class=mi>26</span> <span class=o>*</span> <span class=mi>26</span> <span class=o>*</span> <span class=mi>10</span> <span class=o>+</span>
+		<span class=p>(</span><span class=n>a</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=o>-</span> <span class=sc>&#39;A&#39;</span><span class=p>)</span> <span class=o>*</span> <span class=mi>26</span> <span class=o>*</span> <span class=mi>10</span> <span class=o>+</span>
+		<span class=p>(</span><span class=n>a</span><span class=p>[</span><span class=mi>2</span><span class=p>]</span> <span class=o>-</span> <span class=sc>&#39;A&#39;</span><span class=p>)</span> <span class=o>*</span> <span class=mi>10</span> <span class=o>+</span>
+		<span class=p>(</span><span class=n>a</span><span class=p>[</span><span class=mi>3</span><span class=p>]</span> <span class=o>-</span> <span class=sc>&#39;0&#39;</span><span class=p>);</span>
+<span class=p>}</span>
+
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+	<span class=kt>int</span> <span class=n>n</span><span class=p>,</span> <span class=n>k</span><span class=p>;</span>
+	<span class=kt>char</span> <span class=n>buf</span><span class=p>[</span><span class=mi>5</span><span class=p>];</span>
+	<span class=kt>int</span> <span class=n>course</span><span class=p>;</span>
+	<span class=n>scanf</span><span class=p>(</span><span class=s>&#34;%d%d&#34;</span><span class=p>,</span> <span class=o>&amp;</span><span class=n>n</span><span class=p>,</span> <span class=o>&amp;</span><span class=n>k</span><span class=p>);</span>
+	<span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>n</span><span class=p>;</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span>
+	<span class=p>{</span>
+		<span class=kt>int</span> <span class=n>a</span><span class=p>;</span>
+		<span class=n>scanf</span><span class=p>(</span><span class=s>&#34;%s%d&#34;</span><span class=p>,</span> <span class=n>buf</span><span class=p>,</span> <span class=o>&amp;</span><span class=n>a</span><span class=p>);</span>
+		<span class=kt>int</span> <span class=n>hash</span> <span class=o>=</span> <span class=n>getHash</span><span class=p>(</span><span class=n>buf</span><span class=p>);</span>
+		<span class=n>strcpy</span><span class=p>(</span><span class=n>names</span><span class=p>[</span><span class=n>hash</span><span class=p>],</span> <span class=n>buf</span><span class=p>);</span>
+		<span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>j</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>j</span> <span class=o>&lt;</span> <span class=n>a</span><span class=p>;</span> <span class=n>j</span><span class=o>++</span><span class=p>)</span>
+		<span class=p>{</span>
+			<span class=n>scanf</span><span class=p>(</span><span class=s>&#34;%d&#34;</span><span class=p>,</span> <span class=o>&amp;</span><span class=n>course</span><span class=p>);</span>
+			<span class=n>c</span><span class=p>[</span><span class=n>course</span><span class=p>].</span><span class=n>push_back</span><span class=p>(</span><span class=n>hash</span><span class=p>);</span>
+		<span class=p>}</span>
+	<span class=p>}</span>
+
+	<span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;=</span> <span class=n>k</span><span class=p>;</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span>
+	<span class=p>{</span>
+		<span class=kt>int</span> <span class=n>len</span> <span class=o>=</span> <span class=n>c</span><span class=p>[</span><span class=n>i</span><span class=p>].</span><span class=n>size</span><span class=p>();</span>
+		<span class=n>printf</span><span class=p>(</span><span class=s>&#34;%d %d</span><span class=se>\n</span><span class=s>&#34;</span><span class=p>,</span> <span class=n>i</span><span class=p>,</span> <span class=n>len</span><span class=p>);</span>
+		<span class=n>sort</span><span class=p>(</span><span class=n>c</span><span class=p>[</span><span class=n>i</span><span class=p>].</span><span class=n>begin</span><span class=p>(),</span> <span class=n>c</span><span class=p>[</span><span class=n>i</span><span class=p>].</span><span class=n>end</span><span class=p>());</span>
+		<span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>j</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>j</span> <span class=o>&lt;</span> <span class=n>len</span><span class=p>;</span> <span class=n>j</span><span class=o>++</span><span class=p>)</span>
+		<span class=p>{</span>
+			<span class=n>printf</span><span class=p>(</span><span class=s>&#34;%s</span><span class=se>\n</span><span class=s>&#34;</span><span class=p>,</span> <span class=n>names</span><span class=p>[</span><span class=n>c</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=n>j</span><span class=p>]]);</span>
+		<span class=p>}</span>
+	<span class=p>}</span>
+
+	<span class=n>system</span><span class=p>(</span><span class=s>&#34;pause&#34;</span><span class=p>);</span>
+	<span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+<span class=p>}</span>
+</code></pre></div></section><footer class=article-footer><section class=article-tags><a href=/tags/%E7%AE%97%E6%B3%95/>算法</a>
+<a href=/tags/pat/>PAT</a></section><section class=article-copyright><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg><span>Licensed under CC BY-NC-ND 4.0</span></section></footer></article><aside class=related-contents--wrapper><h2 class=section-title></h2><div class=related-contents><div class="flex article-list--tile"><article><a href=/p/pat-1052/><div class=article-details><h2 class=article-title>PAT 1052 Linked List Sorting (25)</h2></div></a></article><article><a href=/p/pat-1051/><div class=article-details><h2 class=article-title>PAT 1051 Pop Sequence (25)</h2></div></a></article><article><a href=/p/pat-1033/><div class=article-details><h2 class=article-title>PAT 1033 To Fill or Not to Fill (25)</h2></div></a></article><article><a href=/p/pat-1048/><div class=article-details><h2 class=article-title>PAT 1048 Find Coins (25)</h2></div></a></article><article><a href=/p/pat-1039/><div class=article-details><h2 class=article-title>PAT 1039 Course List for Student(25)</h2></div></a></article></div></div></aside><script src=https://utteranc.es/client.js repo=ZacharyJia/ZacharyJia.github.io issue-term=pathname theme=preferred-color-scheme label=Comment crossorigin=anonymous async></script><style>.utterances{max-width:unset}</style><footer class=site-footer><section class=copyright>&copy; 2020 Zachary's Blog</section><section class=powerby><br></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true style=display:none><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const customFont=document.createElement('link');customFont.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";customFont.type="text/css";customFont.rel="stylesheet";document.head.appendChild(customFont);}());</script><link rel=stylesheet href=/css/highlight/light.min.css media="(prefers-color-scheme: light)"><link rel=stylesheet href=/css/highlight/dark.min.css media="(prefers-color-scheme: dark)"></body></html>
