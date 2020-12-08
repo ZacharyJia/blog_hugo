@@ -138,5 +138,5 @@ dofile("c:\\path\\to\\packet-dt.lua")
 # 0x06 结束语
 总的来说，使用Lua来编写Wireshark的协议解析插件还是比较简单的，相对于使用C语言，配置、开发、调试应该都方便了不少。当然，如果要详细开发，肯定还是要多看看官方的开发文档：[Wireshark Developer's Guide](https://www.wireshark.org/docs/wsdg_html_chunked/).
 
-  [1]: https://www.zacharyjia.me/usr/uploads/2018/02/3733043128.png
-  [2]: https://www.zacharyjia.me/usr/uploads/2018/02/569570693.png
+  [1]: lua支持.png
+  [2]: global-configuration.png
