@@ -285,10 +285,24 @@ Wireshark内置了对Lua脚本的支持，可以直接编写Lua脚本，无需�
 上面这段代码已经看起来非常清楚了，如果是解析一般的自定义协议，上边的代码基本上够用了。&lt;/p>
 &lt;p>0x03 Lua插件的启用
 想要启用Lua插件，首先要确认你的Wireshark版本是支持Lua的（Windows版本默认应该都是启用支持了的）。可以通过【帮助】-【关于】窗口确认：
-&lt;img src="https://www.zacharyjia.me/usr/uploads/2018/02/3733043128.png" alt="lua支持.png" />&lt;/p>
+&lt;figure>
+&lt;a href="https://jiacs.com/p/wireshark-plugin-using-lua/lua%E6%94%AF%E6%8C%81.png" data-size="751x382">
+&lt;img srcset="https://jiacs.com/p/wireshark-plugin-using-lua/lua%E6%94%AF%E6%8C%81_hu942bd18a665ea6a7d105d5b408cd9cd6_74523_480x0_resize_box_2.png 480w, https://jiacs.com/p/wireshark-plugin-using-lua/lua%E6%94%AF%E6%8C%81_hu942bd18a665ea6a7d105d5b408cd9cd6_74523_1024x0_resize_box_2.png 1024w"
+src="https://jiacs.com/p/wireshark-plugin-using-lua/lua%E6%94%AF%E6%8C%81.png" width="751" height="382" loading="lazy"
+alt="lua支持.png">
+&lt;/a>
+&lt;figcaption>lua支持.png&lt;/figcaption>
+&lt;/figure>&lt;/p>
 &lt;p>如果是这种With Lua的，应该就是可以的了。&lt;/p>
 &lt;p>然后去文件夹选项卡，找到Global Configuration文件夹的位置:&lt;/p>
-&lt;p>&lt;img src="https://www.zacharyjia.me/usr/uploads/2018/02/569570693.png" alt="global-configuration.png" />&lt;/p>
+&lt;p>&lt;figure>
+&lt;a href="https://jiacs.com/p/wireshark-plugin-using-lua/global-configuration.png" data-size="749x633">
+&lt;img srcset="https://jiacs.com/p/wireshark-plugin-using-lua/global-configuration_hu984d3128a5e42d782fba1f87bd16642c_58256_480x0_resize_box_2.png 480w, https://jiacs.com/p/wireshark-plugin-using-lua/global-configuration_hu984d3128a5e42d782fba1f87bd16642c_58256_1024x0_resize_box_2.png 1024w"
+src="https://jiacs.com/p/wireshark-plugin-using-lua/global-configuration.png" width="749" height="633" loading="lazy"
+alt="global-configuration.png">
+&lt;/a>
+&lt;figcaption>global-configuration.png&lt;/figcaption>
+&lt;/figure>&lt;/p>
 &lt;p>在这个文件夹里找到init.lua文件，使用文本文件编辑器打开它，在文件的最后添加：&lt;/p>
 &lt;pre>&lt;code>dofile(&amp;quot;c:\\path\\to\\packet-dt.lua&amp;quot;)
 &lt;/code>&lt;/pre>&lt;p>填写好正确的packet-dt.lua所在的位置，保存文件就可以了。
